@@ -1,0 +1,9 @@
+#!/bin/sh
+#
+# Opens a squarespace demo site
+# Usage: open-demo bedford
+
+set -e
+
+NAME=$1
+open "https://${NAME}-demo.squarespace.com?nochrome=true"

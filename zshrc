@@ -1,0 +1,31 @@
+# functions
+[[ -f ~/.functions ]] && source ~/.functions
+
+# makes color constants available
+autoload -U colors && colors
+autoload -U compinit && compinit
+
+# ensure dotfiles bin directory is loaded
+export PATH="$HOME/.bin:/usr/local/sbin:$PATH"
+
+# initialize antigen plugin anager
+# https://github.com/zsh-users/antigen
+ANTIGEN_PATH=$(brew --prefix)/share
+source $ANTIGEN_PATH/antigen/antigen.zsh
+
+# load convenience plugins
+antigen bundle zsh-users/zsh-autosuggestions
+antigen bundle zsh-users/zsh-syntax-highlighting
+
+# asdf shell integration
+# https://github.com/ohmyzsh/ohmyzsh/tree/master/plugins/asdf
+antigen bundle ohmyzsh/ohmyzsh plugins/asdf
+
+# apply antigen configuration
+antigen apply
+
+# load starship theme
+eval "$(starship init zsh)"
+
+# aliases
+[[ -f ~/.aliases ]] && source ~/.aliases
