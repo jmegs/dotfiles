@@ -1,0 +1,50 @@
+#!/bin/sh
+
+# Exit if any subcommand fails
+set -e
+
+fancy_echo() {
+    local fmt="$1"
+    shift
+
+    printf "\\n$fmt\\n" "$@"
+}
+
+if ! command -v asdf >/dev/null; then
+    fancy_echo "Can't find asdf command. Bailing…"
+    exit 1
+fi
+
+add_or_update_asdf_plugin() {
+    local name="$1"
+    local url="$2"
+
+    if ! asdf plugin-list | grep -Fq "$name"; then
+        asdf plugin-add "$name" "$url"
+    else
+        asdf plugin-update "$name"
+    fi
+}
+
+add_or_update_asdf_plugin "ruby" "https://github.com/asdf-vm/asdf-ruby.git"
+add_or_update_asdf_plugin "nodejs" "https://github.com/asdf-vm/asdf-nodejs.git"
+
+install_asdf_language() {
+    local language="$1"
+    local version
+    version="$(asdf list-all "$language" | grep -v "[a-z]" | tail -1)"
+
+    if ! asdf list "$language" | grep -Fq "$version"; then
+        asdf install "$language" "$version"
+        asdf global "$language" "$version"
+    fi
+}
+
+fancy_echo "Installing latest ruby"
+install_asdf_language "ruby"
+gem update --system
+number_of_cores=$(sysctl -n hw.ncpu)
+bundle config --global jobs $((number_of_cores - 1))
+
+fancy_echo "Installing latest node"
+NODEJS_CHECK_SIGNATURES=no install_asdf_language "nodejs"
