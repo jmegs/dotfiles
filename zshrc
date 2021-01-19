@@ -1,12 +1,15 @@
-# functions
-[[ -f ~/.functions ]] && source ~/.functions
-
 # makes color constants available
 autoload -U colors && colors
 autoload -U compinit && compinit
 
 # ensure dotfiles bin directory is loaded
 export PATH="$HOME/.bin:/usr/local/sbin:$PATH"
+
+# functions
+[[ -f ~/.functions ]] && source ~/.functions
+
+# aliases
+[[ -f ~/.aliases ]] && source ~/.aliases
 
 # initialize antigen plugin anager
 # https://github.com/zsh-users/antigen
@@ -26,6 +29,3 @@ antigen apply
 
 # load starship theme
 eval "$(starship init zsh)"
-
-# aliases
-[[ -f ~/.aliases ]] && source ~/.aliases
