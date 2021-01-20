@@ -13,8 +13,7 @@ export PATH="$HOME/.bin:/usr/local/sbin:$PATH"
 
 # initialize antigen plugin anager
 # https://github.com/zsh-users/antigen
-ANTIGEN_PATH=$(brew --prefix)/share
-source $ANTIGEN_PATH/antigen/antigen.zsh
+source $(brew --prefix antigen)/share/antigen/antigen.zsh 
 
 # load convenience plugins
 antigen bundle zsh-users/zsh-autosuggestions
