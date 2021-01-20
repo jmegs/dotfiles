@@ -8,13 +8,11 @@ brew "git"
 brew "gh"
 brew "hugo"
 brew "jq"
-brew "mas"
 brew "neovim"
 brew "rcm"
 brew "rename"
 brew "starship"
 brew "tree"
-brew "yarn"
 brew "zsh"
 
 cask "1password"
@@ -36,9 +34,3 @@ cask "slack"
 cask "spotify"
 cask "visual-studio-code"
 
-mas "AdGuard for Safari", id: 1440147259
-mas "DaisyDisk", id: 411643860
-mas "iA Writer", id: 775737590
-mas "Save to Pocket", id: 1477385213
-mas "Things 3", id: 904280696
-mas "WhatFont", id: 1437138382
