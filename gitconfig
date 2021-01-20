@@ -19,7 +19,7 @@
   cob = checkout -b
   pf = push --force-with-lease
   st = status
-  oops = !git reset --hard && git clean -dfi"
+  oops = !git reset --hard && git clean -dfi
 
 [core]
   excludesfile = ~/.gitignore
