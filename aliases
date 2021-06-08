@@ -4,6 +4,11 @@ alias cc="cd ~/Code"
 alias cdd="cd ~/Desktop"
 alias dots="cd ~/.dotfiles"
 
+# It's CD-ing with style
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+
 # Listing
 alias l="ls -1" # single col
 alias ll="ls -lhFG" # list long
@@ -32,3 +37,6 @@ alias be="bundle exec "
 
 # pretty print the PATH
 alias path='echo $PATH | tr -s ":" "\n"'
+
+# pretty tree
+alias et="exa -T --group-directories-first --git-ignore"
