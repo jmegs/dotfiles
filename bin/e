@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+# Open with the specified code editor
+# `e path/to/dir` opens that dir
+# `e` bare command opens the current dir
+
+EDITOR="code"
+
+if [ $# -eq 0 ]; then
+    $EDITOR "$PWD"
+    exit 0
+fi
+
+$EDITOR "$1"

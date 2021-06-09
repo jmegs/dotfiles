@@ -68,6 +68,10 @@ if ask "Wipe the dock?" N; then
   defaults write com.apple.dock persistent-apps -array
 fi
 
+# Minimize windows into applications: on
+defaults write com.apple.dock 'mineffect' -string 'scale'
+defaults write com.apple.dock 'minimize-to-application' -bool true
+
 # Expand save panel by default
 defaults write NSGlobalDomain NSNavPanelExpandedStateForSaveMode -bool true
 
@@ -102,8 +106,8 @@ fi
 
 defaults write com.apple.screencapture location -string "${HOME}/Pictures/Screenshots"
 
-# Enable subpixel font rendering on non-Apple LCDs
-defaults write NSGlobalDomain AppleFontSmoothing -int 1
+# Disable font smoothing
+defaults -currentHost write -g AppleFontSmoothing -int 0
 
 # Don’t automatically rearrange Spaces based on most recent use
 defaults write com.apple.dock mru-spaces -bool false
@@ -111,13 +115,41 @@ defaults write com.apple.dock mru-spaces -bool false
 # Automatically hide and show the Dock
 defaults write com.apple.dock autohide -bool true
 
-# Prevent Safari from opening ‘safe’ files automatically after downloading
-defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
 
 # Avoid creating .DS_Store files on network or USB volumes
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
 
-# Restart Dock and Finder
-echo "\nDefaults set. Restarting Dock and Finder\n"
-killall Finder && Killall Dock
+# Apps
+# Safari
+defaults write com.apple.Safari HomePage -string "about:blank"
+defaults write com.apple.Safari ShowFavoritesBar -bool false
+defaults write com.apple.Safari FindOnPageMatchesWordStartsOnly -bool false
+# Enable the Develop menu and the Web Inspector in Safari
+defaults write com.apple.Safari IncludeDevelopMenu -bool true
+defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
+defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true
+# Add a context menu item for showing the Web Inspector in web views
+defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
+# Prevent Safari from opening ‘safe’ files automatically after downloading
+defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
+
+# TextEdit
+# Use plain text mode for new TextEdit documents
+defaults write com.apple.TextEdit RichText -int 0
+# Open and save files as UTF-8 in TextEdit
+defaults write com.apple.TextEdit PlainTextEncoding -int 4
+defaults write com.apple.TextEdit PlainTextEncodingForWrite -int 4
+
+# Messages
+# Disable automatic emoji substitution (i.e. use plain text smileys)
+defaults write com.apple.messageshelper.MessageController SOInputLineSettings -dict-add "automaticEmojiSubstitutionEnablediMessage" -bool false
+
+# Restart affected applications
+for app in "Activity Monitor" "Address Book" "Calendar" "Contacts" "cfprefsd" \
+	"Dock" "Finder" "Mail" "Messages" "Safari" "SystemUIServer" \
+	"Terminal" "Transmission" "iCal"; do
+	killall "${app}" > /dev/null 2>&1
+done
+
+echo "> Defaults set. You should probably restart your machine…"
