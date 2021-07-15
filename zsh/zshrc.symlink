@@ -1,0 +1,39 @@
+export DOTS_DIR="$HOME/.dotfiles"
+export NVM_COMPLETION=true
+export NVM_LAZY_LOAD=true
+export NVM_AUTO_USE=true
+
+export PATH="$PATH:$DOTS_DIR/bin"
+
+source $DOTS_DIR/zsh/functions.zsh
+source $DOTS_DIR/zsh/aliases.zsh
+
+source $(brew --prefix zplug)/init.zsh
+
+zplug "lukechilds/zsh-nvm"
+zplug "plugins/chruby", from:oh-my-zsh
+zplug "zsh-users/zsh-syntax-highlighting"
+zplug "mafredri/zsh-async", from:github
+zplug "sindresorhus/pure", use:"pure.zsh", from:github, as:theme
+
+# zplug check returns true if all packages are installed
+# Therefore, when it returns false, run zplug install
+if ! zplug check; then
+  zplug install
+fi
+
+# source plugins and add commands to the PATH
+zplug load
+
+# enable frum ruby version manager
+# since there's no zsh plugin yet
+# https://github.com/TaKO8Ki/frum
+eval "$(frum init)"
+
+# The following lines were added by compinstall
+zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}'
+zstyle :compinstall filename '/Users/john/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall

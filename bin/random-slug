@@ -1,0 +1,22 @@
+#!/bin/sh
+#
+# returns a random file slug of the form `pernicious-goldfish`
+# Example usage: mkdir $(random-slug)
+
+set -e
+
+if ! command -v jq &> /dev/null
+
+then
+    echo "jq not found on your system \n"
+    echo "install it using `brew install jq`"
+    exit
+fi
+
+RES=$(curl -s "https://random-word-api.herokuapp.com/word?number=2")
+
+# -r flag tells jq to output raw strings
+ONE=$(echo $RES | jq -r '.[0]')
+TWO=$(echo $RES | jq -r '.[1]')
+
+echo "$ONE-$TWO"
