@@ -28,3 +28,12 @@ antigen apply
 
 # load starship theme
 eval "$(starship init zsh)"
+
+# The following lines were added by compinstall
+
+zstyle ':completion:*' matcher-list 'm:{[:lower:]}={[:upper:]}'
+zstyle :compinstall filename '/Users/john/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
