@@ -1,0 +1,12 @@
+#!/bin/sh
+# Finds out what is running on the specified port
+# Usage: whatsonport 4567
+
+if [ $# -eq 1 ]; then
+  lsof -i :$1
+  if [[ $? != 0 ]]; then
+    echo "Nothing Running on :$1"
+  fi
+else
+  echo "Usage: whatsonport [4567]"
+fi

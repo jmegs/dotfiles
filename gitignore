@@ -1,0 +1,10 @@
+._*
+.DS_Store
+.Spotlight-V100
+.Trashes
+.vscode
+Desktop.ini
+Thumbs.db
+venv/
+
+node_modules/
