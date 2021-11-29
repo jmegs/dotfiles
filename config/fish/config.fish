@@ -11,6 +11,13 @@ set -gx HOMEBREW_BUNDLE_NO_LOCK 1
 set -gx NODEJS_CHECK_SIGNATURES no
 set -gx hydro_two_line_prompt true
 
+# Path aliases
+alias ..="cd ../"
+alias ...="cd ../../"
+alias ....="cd ../../../"
+alias .....="cd ../../../../"
+alias ......="cd ../../../../../"
+
 alias mkdir="mkdir -p"
 alias grep="grep --color=auto"
 alias et="exa -T --group-directories-first --git-ignore"
