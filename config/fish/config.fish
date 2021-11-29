@@ -22,5 +22,7 @@ alias mkdir="mkdir -p"
 alias grep="grep --color=auto"
 alias et="exa -T --group-directories-first --git-ignore"
 
+alias g="git"
+
 # source in asdf from homebrew
 source (brew --prefix asdf)/libexec/asdf.fish
