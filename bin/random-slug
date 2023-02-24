@@ -1,22 +1,13 @@
-#!/bin/sh
-#
-# returns a random file slug of the form `pernicious-goldfish`
-# Example usage: mkdir $(random-slug)
+#!/usr/bin/env ruby
 
-set -e
+require "net/http"
+require "uri"
+require "json"
 
-if ! command -v jq &> /dev/null
+uri = URI.parse("https://random-word-api.herokuapp.com/word?number=2")
+response = Net::HTTP.get_response uri
+words = JSON.parse(response.body)
+result = words.join("-")
 
-then
-    echo "jq not found on your system \n"
-    echo "install it using `brew install jq`"
-    exit
-fi
-
-RES=$(curl -s "https://random-word-api.herokuapp.com/word?number=2")
-
-# -r flag tells jq to output raw strings
-ONE=$(echo $RES | jq -r '.[0]')
-TWO=$(echo $RES | jq -r '.[1]')
-
-echo "$ONE-$TWO"
+system "printf %s #{result} | pbcopy"
+puts result
