@@ -3,6 +3,7 @@ export GOPATH=~/code/go
 export PNPM_HOME=/Users/jmeguerian/Library/pnpm
 export HOMEBREW_BUNDLE_NO_LOCK=1
 export NODEJS_CHECK_SIGNATURES=no
+export ASDF_NODEJS_LEGACY_FILE_DYNAMIC_STRATEGY=latest_installed
 
 path=('/opt/homebrew/bin' '/opt/homebrew/sbin' "$PNPM_HOME" $path)
 path+=(~/.bin)
