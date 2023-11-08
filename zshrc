@@ -2,8 +2,7 @@
 export GOPATH=~/code/go
 export PNPM_HOME=/Users/jmeguerian/Library/pnpm
 export HOMEBREW_BUNDLE_NO_LOCK=1
-export NODEJS_CHECK_SIGNATURES=no
-export ASDF_NODEJS_LEGACY_FILE_DYNAMIC_STRATEGY=latest_installed
+export NVM_LAZY_LOAD=true
 
 path=('/opt/homebrew/bin' '/opt/homebrew/sbin' "$PNPM_HOME" $path)
 path+=(~/.bin)
@@ -19,7 +18,7 @@ source /opt/homebrew/share/antigen/antigen.zsh
 antigen use oh-my-zsh
 
 # list plugins
-antigen bundle asdf
+antigen bundle lukechilds/zsh-nvm
 antigen bundle zsh-users/zsh-syntax-highlighting
 
 antigen theme geometry-zsh/geometry
