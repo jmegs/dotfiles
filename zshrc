@@ -19,6 +19,7 @@ antigen use oh-my-zsh
 
 # list plugins
 antigen bundle lukechilds/zsh-nvm
+antigen bundle rbenv
 antigen bundle zsh-users/zsh-syntax-highlighting
 
 antigen theme geometry-zsh/geometry
