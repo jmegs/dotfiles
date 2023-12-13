@@ -2,7 +2,10 @@
 export GOPATH=~/code/go
 export PNPM_HOME=/Users/jmeguerian/Library/pnpm
 export HOMEBREW_BUNDLE_NO_LOCK=1
-export NVM_LAZY_LOAD=true
+
+# uncomment if nvm is causing the shell to slow down
+# export NVM_LAZY_LOAD=true
+export NVM_AUTO_USE=true
 
 path=('/opt/homebrew/bin' '/opt/homebrew/sbin' "$PNPM_HOME" $path)
 path+=(~/.bin)
