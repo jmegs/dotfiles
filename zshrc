@@ -1,42 +1,54 @@
 # define env variables
+export CLICOLOR_FORCE=1
 export GOPATH=~/code/go
-export PNPM_HOME=/Users/jmeguerian/Library/pnpm
 export HOMEBREW_BUNDLE_NO_LOCK=1
-
 # uncomment if nvm is causing the shell to slow down
 # export NVM_LAZY_LOAD=true
 export NVM_AUTO_USE=true
 
-path=('/opt/homebrew/bin' '/opt/homebrew/sbin' "$PNPM_HOME" $path)
+path=('/opt/homebrew/bin' '/opt/homebrew/sbin' $path)
 path+=(~/.bin)
 export PATH
 
-# define aliases
-alias printpath='echo -e ${PATH//:/\\n}'
+# plugins
+source $HOMEBREW_PREFIX/opt/zplug/init.zsh
 
-# init plugin manager
-source /opt/homebrew/share/antigen/antigen.zsh
+zplug "lukechilds/zsh-nvm"
+zplug "plugins/rbenv",   from:oh-my-zsh
+zplug "zsh-users/zsh-syntax-highlighting"
+zplug "mafredri/zsh-async", from:github
+zplug "sindresorhus/pure", use:pure.zsh, from:github, as:theme
 
-# load the omz library
-antigen use oh-my-zsh
+# turn on git stash status
+zstyle :prompt:pure:git:stash show yes
 
-# list plugins
-antigen bundle lukechilds/zsh-nvm
-antigen bundle rbenv
-antigen bundle zsh-users/zsh-syntax-highlighting
-
-# configure and apply theme
-
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+if ! zplug check; then
+  printf "Install zsh plugins? [y/N]: "
+  if read -q; then
+    echo; zplug install
+  fi
 fi
 
-antigen theme romkatv/powerlevel10k
+zplug load
 
-antigen apply
+# aliases & functions
+alias printpath='echo -e ${PATH//:/\\n}'
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+
+alias l='ls -l'
+alias la='ls -a'
+alias lla='ls -la --color=always'
+alias lt='tree -I "node_nodules|.git"'
+
+if command -v eza >/dev/null 2>&1; then
+    # Command is available, so replace ls with lsd
+    alias ls='eza'
+    alias lt='eza -T --group-directories-first --git-ignore'
+fi
+
+function mkd(){
+  mkdir -p $1; cd $1
+}
