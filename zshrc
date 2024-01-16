@@ -43,6 +43,8 @@ alias la='ls -a'
 alias lla='ls -la --color=always'
 alias lt='tree -I "node_nodules|.git"'
 
+alias g='git '
+
 if command -v eza >/dev/null 2>&1; then
     # Command is available, so replace ls with lsd
     alias ls='eza'
@@ -52,3 +54,9 @@ fi
 function mkd(){
   mkdir -p $1; cd $1
 }
+
+function wip() {
+  git commit --no-verify -m "wip: $*"
+}
+# bun completions
+[ -s "/Users/john/.bun/_bun" ] && source "/Users/john/.bun/_bun"
