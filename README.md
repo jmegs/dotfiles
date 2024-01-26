@@ -1,20 +1,22 @@
 # Dotfiles
+
 Config files. There are many like them, but these are mine.
 
 ## Prerequisites
-* Command Line Tools
-* Homebrew
-* Clone repo into `~/.dotfiles`
+
+- Command Line Tools
+- Homebrew
+- Clone repo into `~/.dotfiles`
 
 ## Install Software
 
-```bash
+```zsh
 brew bundle --no-lock --file=~/.dotfiles/Brewfile
 ```
 
 ## Link RC files
 
-```bash
+```zsh
 # test and make sure everything looks good
 RCRC="~/.dotfiles/rcrc" lsrc
 
@@ -22,17 +24,13 @@ RCRC="~/.dotfiles/rcrc" lsrc
 RCRC="~/.dotfiles/rcrc" rcup
 ```
 
-## Install Runtimes
+## Install Tool Versions
 
-```sh
-asdf plugin add nodejs
-asdf plugin add ruby
-
-asdf install nodejs lts
-asdf ruby install latest
+```zsh
+fnm install --lts
+frum install -l # list available rubies
+frum install 3.3.0 # or whatever latest is
 ```
 
 reminder: also log into work NPM
 https://squarespace.atlassian.net/wiki/spaces/REL/pages/29392710931/Configuring+Npm+Client+npm
-
-

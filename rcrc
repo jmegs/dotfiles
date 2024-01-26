@@ -1,1 +1,1 @@
-EXCLUDES="README.md Brewfile LICENSE .gitignore"
+EXCLUDES="assets README.md Brewfile LICENSE .gitignore"
