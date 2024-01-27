@@ -5,6 +5,8 @@ $directory\
 $git_branch\
 $git_state\
 $git_status\
+$cmd_duration\
+$fill\
 $nodejs\
 $line_break\
 $character"""
@@ -42,7 +44,8 @@ style = "yellow"
 
 [nodejs]
 symbol = "⬢ "
-version_format = "${raw}"
 format = '[$symbol($version)]($style)'
 style = "bold green"
 
+[fill]
+symbol = " "
