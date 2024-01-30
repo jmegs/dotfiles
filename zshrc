@@ -37,7 +37,7 @@ function wip() {
 
 # prompts, env managers, etc
 eval "$(starship init zsh)"
-eval "$(fnm env --use-on-cd --corepack-enabled)"
+eval "$(fnm env --use-on-cd --corepack-enabled --version-file-strategy=recursive)"
 eval "$(frum init)"
 
 # syntax highlighting (must be at end)
