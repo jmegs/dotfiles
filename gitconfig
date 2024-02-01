@@ -5,13 +5,10 @@
 [alias]
   aa = add --all
   st = status
-  co = checkout
-  com = commit
   br = branch
-  oops = !git reset --hard && git clean -dfi
-  lg = "log --graph --pretty=format:'%Cred%h%Creset %an: %s -%Creset %C(yellow)%d%Creset %Cgreen(%cr)%Creset' --abbrev-commit --date=relative"
-  branches = for-each-ref --sort=-committerdate --format=\"%(authordate:relative)\t%(authorname)\t%(color:bold)%(refname:short)\" refs/remotes
-  br = branch --format='%(HEAD) %(refname:short) - %(contents:subject) (%(committerdate:relative)) [%(authorname)]' --sort=-committerdate
+	oops = !git reset --hard && git clean -dfi
+	lg = log --oneline --decorate -20
+	lga = log --oneline --decorate --graph --all -20
 
 [color]
 	diff = auto
@@ -24,7 +21,7 @@
 	excludesfile = ~/.gitignore
 	pager = diff-so-fancy | less -RFX
 	autocrlf = input
-	editor = code --wait
+	editor = nvim
 
 [github]
   user = jmegs
@@ -36,6 +33,9 @@
   default = current
   followTags = true
 
+[fetch]
+	prune = true
+
 [rebase]
   # https://thoughtbot.com/blog/autosquashing-git-commits
   autosquash = true
@@ -43,18 +43,5 @@
 [diff]
   colorMoved = zebra
 
-[color "diff"]
-	meta = yellow
-	frag = magenta bold
-	commit = yellow bold
-	old = red bold
-	new = green bold
-	whitespace = red reverse
-
 [init]
   defaultBranch = main
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
