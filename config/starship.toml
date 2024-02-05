@@ -11,6 +11,8 @@ $ruby\
 $line_break\
 $character"""
 
-# no nerd fonts
+command_timeout = 1000
+
+# use this so no nerd fonts are required
 [nodejs]
 symbol = "[⬢](bold green) "
