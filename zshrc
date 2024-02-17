@@ -1,7 +1,3 @@
-# initialize zsh completions and add case-insensitve cd
-autoload -Uz compinit && compinit
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}' 
-
 # define env variables
 export CLICOLOR_FORCE=1
 export GOPATH=~/code/go
@@ -10,6 +6,17 @@ export HOMEBREW_BUNDLE_NO_LOCK=1
 # add homebrew and user scripts to path
 export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:$PATH
 export PATH=~/.bin:$PATH
+
+# initialize zsh completions
+# make homebrew ones available
+if type brew &>/dev/null
+then
+    FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+fi
+# turn on completions
+autoload -Uz compinit && compinit
+# add case insensitive cd
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
 # aliases & functions
 alias printpath='echo -e ${PATH//:/\\n}'
