@@ -26,10 +26,11 @@ RCRC="~/.dotfiles/rcrc" rcup
 
 ## Install Tool Versions
 
+Restart your shell, then `mise` should pick up on tool version from its global config.
+if not, tell it to use global defaults with:
+
 ```zsh
-fnm install --lts
-frum install -l # list available rubies
-frum install 3.3.0 # or whatever latest is
+mise use --global
 ```
 
 reminder: also log into work NPM

@@ -43,9 +43,8 @@ function wip() {
 }
 
 # prompts, env managers, etc
+eval "$(mise activate zsh)"
 eval "$(starship init zsh)"
-eval "$(fnm env --use-on-cd --version-file-strategy=recursive)"
-eval "$(frum init)"
 
 # syntax highlighting (must be at end)
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
