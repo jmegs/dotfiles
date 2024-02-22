@@ -27,10 +27,11 @@ RCRC="~/.dotfiles/rcrc" rcup
 ## Install Tool Versions
 
 Restart your shell, then `mise` should pick up on tool version from its global config.
-if not, tell it to use global defaults with:
+if not, tell it to install global defaults with:
 
 ```zsh
-mise use --global
+cd
+mise install
 ```
 
 reminder: also log into work NPM
