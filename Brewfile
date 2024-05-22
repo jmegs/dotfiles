@@ -12,6 +12,7 @@ brew "rcm"
 brew "starship"
 brew "trash"
 brew "tree"
+brew "zsh-syntax-highlighting"
 
 cask "arc"
 cask "bartender"
