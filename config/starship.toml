@@ -11,7 +11,7 @@ $ruby\
 $line_break\
 $character"""
 
-command_timeout = 1000
+command_timeout = 1500
 
 # use this so no nerd fonts are required
 [nodejs]
