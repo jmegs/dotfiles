@@ -1,4 +1,4 @@
 [tools]
-node = ["latest", "18"]
+node = ["latest", "lts/iron"]
 ruby = "latest"
 bun = "latest"
