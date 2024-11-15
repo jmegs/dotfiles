@@ -1,8 +1,3 @@
-# define env variables
-export CLICOLOR_FORCE=1
-export GOPATH=~/code/go
-export HOMEBREW_BUNDLE_NO_LOCK=1
-
 # add homebrew and user scripts to path
 export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:$PATH
 export PATH=~/.bin:$PATH
@@ -13,8 +8,10 @@ if type brew &>/dev/null
 then
     FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 fi
+
 # turn on completions
 autoload -Uz compinit && compinit
+
 # add case insensitive cd
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
@@ -34,6 +31,7 @@ if command -v eza >/dev/null 2>&1; then
     alias lt='eza -T --group-directories-first --git-ignore -I node_modules'
 fi
 
+# load custom functions
 function mkd(){
   mkdir -p "$1"; cd "$1"
 }

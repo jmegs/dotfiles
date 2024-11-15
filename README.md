@@ -14,6 +14,8 @@ Config files. There are many like them, but these are mine.
 brew bundle --no-lock --file=~/.dotfiles/Brewfile
 ```
 
+reminder: also grab Things and iA Writer from the App Store
+
 ## Link RC files
 
 ```zsh
