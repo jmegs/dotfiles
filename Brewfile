@@ -1,5 +1,3 @@
-cask_args appdir: "~/Applications"
-
 brew "diff-so-fancy"
 brew "eza"
 brew "gh"
@@ -22,6 +20,7 @@ cask "cleanshot"
 cask "discord"
 cask "figma"
 cask "figma@beta"
+cask "google-chrome"
 cask "iterm2"
 cask "orbstack"
 cask "raycast"
