@@ -2,3 +2,4 @@
 node = ["latest", "lts/iron"]
 ruby = "latest"
 bun = "latest"
+go = "latest"
