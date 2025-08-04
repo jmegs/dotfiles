@@ -16,3 +16,6 @@ command_timeout = 1500
 # use this so no nerd fonts are required
 [nodejs]
 symbol = "[⬢](bold green) "
+
+[ruby]
+symbol = "[◊](bold red) "
