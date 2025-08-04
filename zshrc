@@ -1,6 +1,8 @@
 # add homebrew and user scripts to path
 export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:$PATH
 export PATH=~/.bin:$PATH
+export ARTIFACTORY_USERNAME=jmeguerian
+export ARTIFACTORY_TOKEN=$(cat ~/.ssh/artifactory_token)
 
 # initialize zsh completions
 # make homebrew ones available
