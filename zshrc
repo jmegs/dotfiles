@@ -16,6 +16,9 @@ autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 
 # aliases & functions
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
 alias printpath='echo -e ${PATH//:/\\n}'
 alias l='ls -l'
 alias la='ls -a'
@@ -43,6 +46,7 @@ function wip() {
 # prompts, env managers, etc
 eval "$(mise activate zsh)"
 eval "$(starship init zsh)"
+eval "$(zoxide init zsh)"
 
 # syntax highlighting (must be at end)
 source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
