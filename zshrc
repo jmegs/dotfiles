@@ -4,6 +4,9 @@ export PATH=~/.bin:$PATH
 export ARTIFACTORY_USERNAME=jmeguerian
 export ARTIFACTORY_TOKEN=$(cat ~/.ssh/artifactory_token)
 
+export VISUAL=nvim
+export EDITOR=nvim
+
 # initialize zsh completions
 # make homebrew ones available
 if type brew &>/dev/null
