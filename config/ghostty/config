@@ -1,4 +1,3 @@
 window-padding-x = 16
-theme = tokyonight
+theme = "Github Dark Default"
 font-family = "TX-02"
-
