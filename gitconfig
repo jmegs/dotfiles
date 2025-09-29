@@ -9,6 +9,7 @@
 	oops = !git reset --hard && git clean -dfi
 	lg = log --oneline --decorate -20
 	lga = log --oneline --decorate --graph --all -20
+  mib = !git switch main && git merge - --ff-only
 
 [color]
 	diff = auto
