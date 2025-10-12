@@ -1,3 +1,5 @@
 window-padding-x = 16
-theme = "Github Dark Default"
+theme = "dark:kanso-ink,light:kanso-pearl"
 font-family = "TX-02"
+font-size = 13
+keybind = global:cmd+escape=toggle_quick_terminal
