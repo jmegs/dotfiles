@@ -1,5 +1,7 @@
 [tools]
 node = ["latest", "lts/iron"]
 ruby = "latest"
-bun = "latest"
-go = "latest"
+pnpm = "latest"
+
+[settings]
+idiomatic_version_file_enable_tools = ["node"]
