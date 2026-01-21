@@ -2,7 +2,10 @@ return {
   {
     "webhooked/kanso.nvim",
     opts = {
-      foreground = "saturated",
+      foreground = {
+        dark = "default",
+        light = "saturated",
+      },
       background = {
         dark = "ink",
         light = "pearl",
