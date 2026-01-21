@@ -1,5 +1,4 @@
 window-padding-x = 16
-theme = "dark:kanso-ink,light:kanso-pearl"
+theme = "kanso-ink"
 font-family = "TX-02"
 font-size = 13
-keybind = global:cmd+escape=toggle_quick_terminal
