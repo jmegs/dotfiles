@@ -1,5 +1,4 @@
 brew "bat"
-brew "biome"
 brew "btop"
 brew "diff-so-fancy"
 brew "eza"
