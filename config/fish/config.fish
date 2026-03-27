@@ -12,9 +12,9 @@ fish_add_path --global --move --path /opt/homebrew/bin /opt/homebrew/sbin "$PNPM
 if command -q eza
     # Eza is available, so replace ls
     alias ls='eza'
-    alias l='eza --tree --level=1 --group-directories-first'
+    alias l='eza --tree --level=1 --group-directories-first --icons=auto'
     alias la='eza --all --tree --level=1 --group-directories-first'
-    alias lt='eza -T --group-directories-first --git-ignore -I node_modules'
+    alias lt='eza -T --group-directories-first --git-ignore -I node_modules --icons=auto'
 end
 
 if command -q bat
