@@ -7,7 +7,7 @@ set -gx PNPM_HOME /Users/jmeguerian/Library/pnpm
 
 # soup up path, persistently, in the correct order, 
 # and as a colon delimited path string
-fish_add_path --global --move --path /opt/homebrew/bin /opt/homebrew/sbin "$PNPM_HOME" ~/.bin
+fish_add_path --global --move --path /opt/homebrew/bin /opt/homebrew/sbin "$PNPM_HOME" ~/.local/bin ~/.bin
 
 if command -q eza
     # Eza is available, so replace ls
@@ -29,4 +29,9 @@ alias g="git "
 alias mkdir="mkdir -p"
 alias dot="cd ~/.dotfiles"
 
+alias claude-personal="CLAUDE_CONFIG_DIR=~/.claude-personal command claude"
+alias claude-work="CLAUDE_CONFIG_DIR=~/.claude-work command claude"
+alias claude="echo 'Use claude-personal or claude-work'"
+
+mise activate fish | source
 zoxide init fish | source
