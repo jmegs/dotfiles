@@ -1,0 +1,4 @@
+window-padding-x = 16
+theme = light:kanso-pearl,dark:kanso-ink
+font-family = "TX-02"
+font-size = 14
