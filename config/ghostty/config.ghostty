@@ -1,4 +1,6 @@
 window-padding-x = 16
-theme = light:kanso-pearl,dark:kanso-ink
+window-padding-y = 16
+theme = light:Kanso Pearl,dark:Kanso Zen
 font-family = "TX-02"
 font-size = 14
+adjust-cell-height = 15%
