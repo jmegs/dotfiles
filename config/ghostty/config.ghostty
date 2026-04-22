@@ -1,6 +1,6 @@
 window-padding-x = 16
 window-padding-y = 16
-theme = light:Kanso Pearl,dark:Kanso Zen
+theme = Monokai Pro
 font-family = "TX-02"
 font-size = 14
 adjust-cell-height = 15%
