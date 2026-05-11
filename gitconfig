@@ -14,6 +14,9 @@
 	lga = log --oneline --decorate --graph --all -20
   mib = !git switch main && git merge - --ff-only
 
+[branch]
+  sort = -committerdate
+
 [color]
 	diff = auto
 	status = auto
@@ -27,13 +30,26 @@
 	autocrlf = input
 	editor = nvim
 
+[delta]
+  navigate = true
+
+[diff]
+  algorithm = histogram
+
 [github]
   user = jmegs
+
+[interactive]
+  diffFilter = delta --color-only
+
+[merge]
+  conflictstyle = zdiff3
 
 [pull]
   rebase = true
 
 [push]
+  autoSetupRemote = true
   default = current
   followTags = true
 
@@ -43,9 +59,12 @@
 [rebase]
   # https://thoughtbot.com/blog/autosquashing-git-commits
   autosquash = true
+  # https://jvns.ca/blog/2024/02/16/popular-git-config-options/
+  autostash = true
 
 [diff]
   colorMoved = zebra
 
 [init]
   defaultBranch = main
+

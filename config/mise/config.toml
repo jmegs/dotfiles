@@ -2,10 +2,16 @@
 node = ["latest", "lts"]
 ruby = "latest"
 pnpm = "latest"
-bun = "latest"
+go = "latest"
 
 [settings]
-idiomatic_version_file_enable_tools = ["node", "ruby"]
+idiomatic_version_file_enable_tools = ["node", "ruby", "go"]
 
 [settings.ruby]
 compile = false
+
+[settings.go]
+# sets GOROOT to the active mise GO install path
+set_goroot = true
+# makes go install put binaries somewhere stable across Go versions
+set_gobin = false

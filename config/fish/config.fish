@@ -3,11 +3,18 @@ set -g fish_greeting # null out welcome message
 set -gx ARTIFACTORY_USERNAME jmeguerian
 set -gx ARTIFACTORY_TOKEN $(cat ~/.ssh/artifactory_token)
 set -gx VISUAL nvim
-set -gx PNPM_HOME /Users/jmeguerian/Library/pnpm
+set -gx PNPM_HOME $HOME/Library/pnpm
+set -gx GOPATH $HOME/.local/share/go
+set -gx GOBIN $HOME/.local/bin
 
-# soup up path, persistently, in the correct order, 
+# soup up path, persistently, in the correct order,
 # and as a colon delimited path string
-fish_add_path --global --move --path /opt/homebrew/bin /opt/homebrew/sbin "$PNPM_HOME" ~/.bun/bin ~/.local/bin ~/.bin
+fish_add_path --global --move \
+    /opt/homebrew/bin \
+    /opt/homebrew/sbin \
+    "$PNPM_HOME" \
+    ~/.local/bin \
+    ~/.bin
 
 if command -q eza
     # Eza is available, so replace ls
@@ -28,8 +35,6 @@ end
 alias g="git "
 alias mkdir="mkdir -p"
 alias dot="cd ~/.dotfiles"
-alias bb="bun --bun "
-alias bbx="bunx --bun "
 
 alias claude-personal="CLAUDE_CONFIG_DIR=~/.claude-personal command claude"
 alias claude-work="CLAUDE_CONFIG_DIR=~/.claude-work command claude"
