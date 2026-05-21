@@ -1,14 +1,17 @@
 return {
   {
-    "webhooked/kanso.nvim",
-    lazy = false,
-    priority = 1000,
+    "catppuccin/nvim",
+    name = "catppuccin",
+    opts = {
+      integrations = {
+        bufferline = true,
+      },
+    },
   },
-
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "kanso",
+      colorscheme = "catppuccin",
     },
   },
 }
