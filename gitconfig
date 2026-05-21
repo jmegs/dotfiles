@@ -68,3 +68,8 @@
 [init]
   defaultBranch = main
 
+[http "https://appspace.squarespace.net/"]
+	sslCAInfo = /Users/jmeguerian/.sqsp/ca_bundle.pem
+
+[credential "https://appspace.squarespace.net"]
+	helper = osxkeychain
