@@ -5,7 +5,7 @@ pnpm = "latest"
 go = "latest"
 
 [settings]
-idiomatic_version_file_enable_tools = ["node", "ruby", "go"]
+idiomatic_version_file_enable_tools = ["node", "ruby", "go", "java"]
 
 [settings.ruby]
 compile = false
