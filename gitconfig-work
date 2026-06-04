@@ -1,0 +1,3 @@
+# Work identity — included conditionally from ~/.gitconfig (see includeIf blocks).
+[user]
+  email = jmeguerian@squarespace.com

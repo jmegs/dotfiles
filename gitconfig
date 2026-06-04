@@ -2,6 +2,14 @@
   name = John Meguerian
   email = johnmeguerian@gmail.com
 
+# Work repos kept under ~/Developer/sqsp/ use the work identity.
+[includeIf "gitdir:~/Developer/sqsp/"]
+  path = ~/.gitconfig-work
+
+# Backstop: any repo whose remote points at the sqsp GitHub org, wherever it lives.
+[includeIf "hasconfig:remote.*.url:**sqsp/**"]
+  path = ~/.gitconfig-work
+
 [alias]
   aa = add --all
   c = commit
@@ -10,8 +18,8 @@
   st = status
   br = branch
 	oops = !git reset --hard && git clean -dfi
-	lg = log --oneline --decorate -20
-	lga = log --oneline --decorate --graph --all -20
+	lg = log --oneline --decorate --pretty=nice 
+	lga = log --oneline --decorate --graph --all
   mib = !git switch main && git merge - --ff-only
 
 [branch]
@@ -53,6 +61,9 @@
   default = current
   followTags = true
 
+[pretty]
+  nice = format:%C(auto)%h %C(blue)%>(15,trunc)%cr %C(green)%<(15,trunc)%aN%C(auto)%d %Creset%s
+  
 [fetch]
 	prune = true
 
