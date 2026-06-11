@@ -33,6 +33,7 @@ if command -q btm
 end
 
 alias g="git "
+alias e="nvim "
 alias mkdir="mkdir -p"
 alias dot="cd ~/.dotfiles"
 

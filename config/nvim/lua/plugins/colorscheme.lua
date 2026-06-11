@@ -5,6 +5,7 @@ return {
     priority = 1000,
     opts = {
       foreground = "saturated",
+      minimal = true,
     },
   },
   -- Configure LazyVim to load the colorscheme
