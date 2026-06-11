@@ -9,3 +9,4 @@ venv/
 
 node_modules/
 .mise.toml
+**/.claude/settings.local.json

@@ -21,6 +21,7 @@
 	lg = log --oneline --decorate --pretty=nice 
 	lga = log --oneline --decorate --graph --all
   mib = !git switch main && git merge - --ff-only
+  up = push -u origin HEAD
 
 [branch]
   sort = -committerdate
@@ -57,7 +58,6 @@
   rebase = true
 
 [push]
-  autoSetupRemote = true
   default = current
   followTags = true
 
