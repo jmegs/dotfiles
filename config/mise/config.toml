@@ -3,6 +3,7 @@ node = ["latest", "lts"]
 ruby = "latest"
 pnpm = "latest"
 go = "latest"
+bun = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = ["node", "ruby", "go", "java"]
