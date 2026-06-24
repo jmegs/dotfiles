@@ -1,6 +1,6 @@
 window-padding-x = 16
 window-padding-y = 16
 theme = dark:Kanso Ink, light:Kanso Pearl
-font-family = "MonoLisa"
-font-size = 16
+font-family = "TX-02"
+font-size = 15
 adjust-cell-height = 15%
