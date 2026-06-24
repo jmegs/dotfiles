@@ -33,13 +33,10 @@ if command -q btm
 end
 
 alias g="git "
-alias e="nvim "
+alias gg="lazygit"
 alias mkdir="mkdir -p"
 alias dot="cd ~/.dotfiles"
 
-alias claude-personal="CLAUDE_CONFIG_DIR=~/.claude-personal command claude"
-alias claude-work="CLAUDE_CONFIG_DIR=~/.claude-work command claude"
-alias claude="echo 'Use claude-personal or claude-work'"
 
 mise activate fish | source
 zoxide init fish | source
