@@ -14,7 +14,7 @@ Config files. There are many like them, but these are mine.
 
 **Runtime management:** mise handles Node, Python, etc. via a single global config.
 
-**Dotfile management:** rcm symlinks everything from `~/.dotfiles` into the home directory. The `rcrc` file controls what gets excluded (like this README).
+**Dotfile management:** [chezmoi](https://www.chezmoi.io) renders these files into the home directory from its source repo. Per-machine differences (work vs personal, macOS vs Linux) come from Go templates plus a small `~/.config/chezmoi/chezmoi.toml` data file. `.chezmoiignore` keeps repo-only files (like this README) out of `$HOME`.
 
 **Git:** Concise aliases, auto-pruning fetch, rebase-on-pull, diff-so-fancy paging. GitHub user: [jmegs](https://github.com/jmegs).
 
@@ -22,46 +22,30 @@ Config files. There are many like them, but these are mine.
 
 ## Set Up
 
-### Prerequisites
+### New machine (one line)
 
-- Command Line Tools
-- Homebrew
-- Clone this repo into `~/.dotfiles`
+chezmoi installs itself, pulls this repo, and applies everything:
 
-### Install software
-
-```zsh
-brew bundle --no-lock --file=~/.dotfiles/Brewfile
+```sh
+sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply jmegs
 ```
 
-### Link config files
+You'll be asked whether this is a work machine (and, if so, your Artifactory username). On macOS the run-once scripts then handle the rest: `brew bundle` (apps + CLIs), Fisher (Fish plugins), and `mise install` (tool versions). Prerequisites: Xcode Command Line Tools and Homebrew.
 
-```zsh
-# preview what will be linked
-RCRC="~/.dotfiles/rcrc" lsrc
+### Day-to-day
 
-# if it looks good, link
-RCRC="~/.dotfiles/rcrc" rcup
+```sh
+chezmoi edit ~/.zshrc      # edit a config (opens the source file)
+chezmoi apply              # write changes into $HOME
+chezmoi diff               # preview pending changes
+chezmoi cd                 # drop into the source repo to commit & push
+chezmoi update             # git pull + apply in one step
 ```
 
-### Install Fish plugins
-
-Install [Fisher](https://github.com/jorgebucaran/fisher), then let it pick up the tracked plugin list:
-
-```fish
-curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher
-fisher update
-```
-
-### Install tool versions
-
-Restart your shell, then mise should pick up tool versions from its global config. If not:
-
-```zsh
-cd
-mise install
-```
+Edited a file in place instead? `chezmoi re-add <file>` pulls the change back into the source.
 
 ### Work-specific setup
 
-- Log into work's private npm registry via artifactory
+- Answer `yes` to the work-machine prompt (or set `work = true` in `~/.config/chezmoi/chezmoi.toml`) to enable the Artifactory env vars and the Squarespace git config.
+- Drop the Artifactory token at `~/.ssh/artifactory_token`.
+- Log into work's private npm registry via Artifactory.

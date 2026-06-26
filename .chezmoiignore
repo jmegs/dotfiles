@@ -1,0 +1,7 @@
+# Files that live in the repo but should NOT be applied to $HOME.
+# Patterns are anchored with a leading slash so they only match the repo
+# root and never a nested file (e.g. dot_config/nvim/LICENSE stays managed).
+/README.md
+/LICENSE
+/Brewfile
+/assets
