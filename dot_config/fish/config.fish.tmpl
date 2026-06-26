@@ -1,18 +1,24 @@
 set -g fish_greeting # null out welcome message
 
-set -gx ARTIFACTORY_USERNAME jmeguerian
+{{ if .work -}}
+set -gx ARTIFACTORY_USERNAME {{ .artifactoryUser }}
 set -gx ARTIFACTORY_TOKEN $(cat ~/.ssh/artifactory_token)
+{{ end -}}
 set -gx VISUAL nvim
-set -gx PNPM_HOME $HOME/Library/pnpm
 set -gx GOPATH $HOME/.local/share/go
 set -gx GOBIN $HOME/.local/bin
+{{ if eq .chezmoi.os "darwin" -}}
+set -gx PNPM_HOME $HOME/Library/pnpm
+{{ end -}}
 
 # soup up path, persistently, in the correct order,
 # and as a colon delimited path string
 fish_add_path --global --move \
+{{- if eq .chezmoi.os "darwin" }}
     /opt/homebrew/bin \
     /opt/homebrew/sbin \
     "$PNPM_HOME" \
+{{- end }}
     ~/.local/bin \
     ~/.bin
 
@@ -35,7 +41,7 @@ end
 alias g="git "
 alias gg="lazygit"
 alias mkdir="mkdir -p"
-alias dot="cd ~/.dotfiles"
+alias dot="chezmoi cd"
 
 
 mise activate fish | source

@@ -79,8 +79,10 @@
 [init]
   defaultBranch = main
 
+{{ if .work -}}
 [http "https://appspace.squarespace.net/"]
-	sslCAInfo = /Users/jmeguerian/.sqsp/ca_bundle.pem
+	sslCAInfo = {{ .chezmoi.homeDir }}/.sqsp/ca_bundle.pem
 
 [credential "https://appspace.squarespace.net"]
 	helper = osxkeychain
+{{ end -}}

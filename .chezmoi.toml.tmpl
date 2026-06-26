@@ -1,0 +1,9 @@
+{{- /* Generates ~/.config/chezmoi/chezmoi.toml on `chezmoi init`. */ -}}
+{{- $work := promptBoolOnce . "work" "Is this a work machine" false -}}
+{{- $artifactoryUser := "jmeguerian" -}}
+{{- if $work -}}
+{{-   $artifactoryUser = promptStringOnce . "artifactoryUser" "Artifactory username" "jmeguerian" -}}
+{{- end -}}
+[data]
+    work = {{ $work }}
+    artifactoryUser = {{ $artifactoryUser | quote }}

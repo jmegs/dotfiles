@@ -1,0 +1,8 @@
+#!/bin/bash
+{{ if eq .chezmoi.os "darwin" -}}
+# Runs `brew bundle` whenever the Brewfile changes (the hash below forces a
+# re-run on edit). macOS only; renders to an empty no-op elsewhere.
+# Brewfile hash: {{ include "Brewfile" | sha256sum }}
+set -euo pipefail
+brew bundle --file={{ .chezmoi.sourceDir }}/Brewfile
+{{ end -}}
