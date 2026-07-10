@@ -1,6 +1,8 @@
 window-padding-x = 16
 window-padding-y = 16
-theme = dark:kanso-ink, light:kanso-pearl
-font-family = "Fira Code"
+# theme = dark:TokyoNight Moon, light:TokyoNight Day
+# theme = dark:kanso-ink, light:kanso-pearl
+theme = nordic
+font-family = "TX-02"
 font-size = 14
-adjust-cell-height = 15%
+adjust-cell-height = 20%
