@@ -3,7 +3,6 @@ set -g fish_greeting # null out welcome message
 set -gx ARTIFACTORY_USERNAME jmeguerian
 set -gx ARTIFACTORY_TOKEN $(cat ~/.ssh/artifactory_token)
 set -gx VISUAL nvim
-set -gx PNPM_HOME $HOME/Library/pnpm
 set -gx GOPATH $HOME/.local/share/go
 set -gx GOBIN $HOME/.local/bin
 
