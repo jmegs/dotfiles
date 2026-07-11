@@ -30,7 +30,7 @@ chezmoi installs itself, pulls this repo, and applies everything:
 sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply jmegs
 ```
 
-You'll be asked whether this is a work machine (and, if so, your Artifactory username). On macOS the run-once scripts then handle the rest: `brew bundle` (apps + CLIs), Fisher (Fish plugins), and `mise install` (tool versions). Prerequisites: Xcode Command Line Tools and Homebrew.
+You'll be asked whether this is a work machine (and, if so, your Artifactory username). On macOS the run-onchange scripts then handle the rest: `brew bundle` (apps + CLIs), Fisher (Fish plugins), and `mise install` (tool versions). Prerequisites: Xcode Command Line Tools and Homebrew.
 
 ### Day-to-day
 
@@ -49,3 +49,32 @@ Edited a file in place instead? `chezmoi re-add <file>` pulls the change back in
 - Answer `yes` to the work-machine prompt (or set `work = true` in `~/.config/chezmoi/chezmoi.toml`) to enable the Artifactory env vars and the Squarespace git config.
 - Drop the Artifactory token at `~/.ssh/artifactory_token`.
 - Log into work's private npm registry via Artifactory.
+
+## Roll Back to rcm
+
+Keep the old `~/.dotfiles` checkout and leave rcm installed until the chezmoi workflow has been proven through a few normal updates. Before applying the migration, preserve the last rcm commit under a memorable local branch:
+
+```sh
+git -C ~/.dotfiles branch rcm-rollback 5769d80
+```
+
+To roll back, first make sure `chezmoi diff` is empty and commit or otherwise preserve any changes in the chezmoi source directory. Then remove chezmoi's source, configuration, and state; this leaves the rendered dotfiles in place:
+
+```sh
+chezmoi purge
+git -C ~/.dotfiles switch rcm-rollback
+```
+
+Preview the rcm restoration without changing the filesystem:
+
+```sh
+RCRC="$HOME/.dotfiles/rcrc" rcup -g
+```
+
+Then restore the rcm symlinks interactively. rcm will prompt before replacing any regular file that differs from the copy in `~/.dotfiles`:
+
+```sh
+RCRC="$HOME/.dotfiles/rcrc" rcup -i
+```
+
+After verifying the shell, Git, Fish, Ghostty, mise, and Neovim configurations, chezmoi can be uninstalled with `brew uninstall chezmoi`. If the migration is kept instead, remove the `rcm-rollback` branch and uninstall rcm only after the rollback window has passed.
