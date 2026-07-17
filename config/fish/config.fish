@@ -6,13 +6,10 @@ set -gx VISUAL nvim
 set -gx GOPATH $HOME/.local/share/go
 set -gx GOBIN $HOME/.local/bin
 
-# soup up path, persistently, in the correct order,
-# and as a colon delimited path string
-fish_add_path --global --move \
+# Build the base PATH directly so mise can prepend its active tool paths below.
+fish_add_path --path \
     /opt/homebrew/bin \
     /opt/homebrew/sbin \
-    "$PNPM_HOME" \
-    "$PNPM_HOME/bin" \
     ~/.local/bin \
     ~/.bin
 
@@ -37,5 +34,4 @@ alias gg="lazygit"
 alias mkdir="mkdir -p"
 alias dot="cd ~/.dotfiles"
 
-mise activate fish | source
 zoxide init fish | source
