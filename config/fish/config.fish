@@ -34,4 +34,7 @@ alias gg="lazygit"
 alias mkdir="mkdir -p"
 alias dot="cd ~/.dotfiles"
 
+# Activate mise last so its tool dirs sit in front of the PATH built above.
+# Vendor auto-activation is disabled in conf.d/00-mise.fish (see note there).
+mise activate fish | source
 zoxide init fish | source
